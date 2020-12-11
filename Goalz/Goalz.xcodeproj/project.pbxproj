@@ -13,6 +13,8 @@
 		E9A2156B258421CE00C79100 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A2156A258421CE00C79100 /* Preview Assets.xcassets */; };
 		E9A21576258421CE00C79100 /* GoalzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21575258421CE00C79100 /* GoalzTests.swift */; };
 		E9A21581258421CE00C79100 /* GoalzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21580258421CE00C79100 /* GoalzUITests.swift */; };
+		E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */; };
+		E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		E9A2157C258421CE00C79100 /* GoalzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoalzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A21580258421CE00C79100 /* GoalzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalzUITests.swift; sourceTree = "<group>"; };
 		E9A21582258421CE00C79100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightToPopViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 			children = (
 				E9A21563258421CC00C79100 /* GoalzApp.swift */,
 				E9A21565258421CC00C79100 /* ContentView.swift */,
+				E9A2159125842AA300C79100 /* LazyPop */,
 				E9A21567258421CE00C79100 /* Assets.xcassets */,
 				E9A2156C258421CE00C79100 /* Info.plist */,
 				E9A21569258421CE00C79100 /* Preview Content */,
@@ -128,6 +133,15 @@
 				E9A21582258421CE00C79100 /* Info.plist */,
 			);
 			path = GoalzUITests;
+			sourceTree = "<group>";
+		};
+		E9A2159125842AA300C79100 /* LazyPop */ = {
+			isa = PBXGroup;
+			children = (
+				E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */,
+				E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */,
+			);
+			path = LazyPop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A21566258421CC00C79100 /* ContentView.swift in Sources */,
+				E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */,
 				E9A21564258421CC00C79100 /* GoalzApp.swift in Sources */,
+				E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
