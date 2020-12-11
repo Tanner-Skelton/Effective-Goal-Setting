@@ -16,10 +16,6 @@ struct GoalView: View {
     }
 }
 
-<<<<<<< HEAD
-
- 
-
 struct NavigationBarView: View {
     
     @State private var isShowingGoalView = false
@@ -39,17 +35,6 @@ struct ContentView: View {
 
     @FetchRequest(sortDescriptors: [])
     private var goals: FetchedResults<Goal>
-=======
-struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    /*@FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-    */
-    
->>>>>>> 44adaf548433221d2919cf7a6041b8ecae88f0a0
     // showing views based on bool
     //@State private var isShowingGoalView = false
     // showing views base on selection
@@ -95,8 +80,6 @@ struct ContentView: View {
                 })
         }
     }
-<<<<<<< HEAD
-    
     
     private func saveContext() {
         do {
@@ -104,40 +87,6 @@ struct ContentView: View {
         } catch {
             let error = error as NSError
             fatalError("Unresolved Error: \(error)")
-=======
-    /*var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
-        }
-    }*/
-
-    /*
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
->>>>>>> 44adaf548433221d2919cf7a6041b8ecae88f0a0
         }
     }
     //Test function to add new goal with title "New goal + the date it was ceated"
@@ -155,12 +104,6 @@ struct ContentView: View {
             saveContext()
         }
     }
-<<<<<<< HEAD
-    
-=======
-    */
-}
->>>>>>> 44adaf548433221d2919cf7a6041b8ecae88f0a0
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -174,4 +117,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
 }
