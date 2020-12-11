@@ -19,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         
     }
-    /*var body: some View {
+    var body: some View {
         List {
             ForEach(items) { item in
                 Text("Item at \(item.timestamp!, formatter: itemFormatter)")
@@ -35,7 +35,7 @@ struct ContentView: View {
                 Label("Add Item", systemImage: "plus")
             }
         }
-    }*/
+    }
 
     private func addItem() {
         withAnimation {
