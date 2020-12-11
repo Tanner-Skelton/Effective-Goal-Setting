@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				E9FA6DF42582E9B700D708C6 /* Effective_Goal_SettingApp.swift */,
-				E9FA6DF62582E9B700D708C6 /* ContentView.swift */,
+				E9FA6E272582FF8F00D708C6 /* Views */,
 				E9FA6DF82582E9BA00D708C6 /* Assets.xcassets */,
 				E9FA6DFD2582E9BA00D708C6 /* Persistence.swift */,
 				E9FA6E022582E9BA00D708C6 /* Info.plist */,
@@ -134,6 +134,14 @@
 				E9FA6E182582E9BA00D708C6 /* Info.plist */,
 			);
 			path = "Effective-Goal-SettingUITests";
+			sourceTree = "<group>";
+		};
+		E9FA6E272582FF8F00D708C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9FA6DF62582E9B700D708C6 /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
