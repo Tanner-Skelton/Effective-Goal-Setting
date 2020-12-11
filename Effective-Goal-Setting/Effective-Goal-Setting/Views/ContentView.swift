@@ -15,6 +15,9 @@ struct GoalView: View {
     }
 }
 
+
+ 
+
 struct NavigationBarView: View {
     
     @State private var isShowingGoalView = false
@@ -32,11 +35,8 @@ struct NavigationBarView: View {
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-    
+    @FetchRequest(sortDescriptors: [])
+    private var goals: FetchedResults<Goal>
     // showing views based on bool
     //@State private var isShowingGoalView = false
     // showing views base on selection
@@ -51,6 +51,16 @@ struct ContentView: View {
                     destination: GoalView(),
                     tag: "Goal",
                     selection: $selection ) { EmptyView() }
+                List {
+                    ForEach(goals) { goal in
+                        Text(goal.title ?? "Untitled")
+                    }.onDelete(perform: deleteGoal)
+                }
+                //button that adds a goal to the DB
+                Button("+ Goal") {
+                    addGoal()
+                }
+                
                 
                 Button("Create Goal"){
                     self.selection = "Goal"
@@ -60,55 +70,32 @@ struct ContentView: View {
                 .navigationBarItems(trailing: NavigationBarView())
         }
     }
-    var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
+    
+    
+    private func saveContext() {
+        do {
+            try  viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Unresolved Error: \(error)")
         }
     }
-
-    private func addItem() {
+    //Test function to add new goal with title "New goal + the date it was ceated"
+    private func addGoal() {
+        let newGoal = Goal(context: viewContext)
+        newGoal.title = "New Goal \(Date())"
+        newGoal.timestamp = Date()
+        
+        saveContext()
+    }
+    
+    private func deleteGoal(offsets: IndexSet) {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            offsets.map { goals[$0] }.forEach(viewContext.delete)
+            saveContext()
         }
     }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-}
+    
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -121,4 +108,5 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
+}
 }
