@@ -15,6 +15,8 @@
 		E9A21581258421CE00C79100 /* GoalzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21580258421CE00C79100 /* GoalzUITests.swift */; };
 		E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */; };
 		E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */; };
+		F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F838AB6F258425CB0097C2CB /* Goalz.xcdatamodeld */; };
+		F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89F4DC8258426B30051FEC2 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		E9A21582258421CE00C79100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightToPopViewController.swift; sourceTree = "<group>"; };
+		F838AB70258425CB0097C2CB /* Goalz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Goalz.xcdatamodel; sourceTree = "<group>"; };
+		F89F4DC8258426B30051FEC2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				E9A21563258421CC00C79100 /* GoalzApp.swift */,
 				E9A21565258421CC00C79100 /* ContentView.swift */,
 				E9A2159125842AA300C79100 /* LazyPop */,
+				F89F4DC8258426B30051FEC2 /* Persistence.swift */,
+				F838AB6F258425CB0097C2CB /* Goalz.xcdatamodeld */,
 				E9A21567258421CE00C79100 /* Assets.xcassets */,
 				E9A2156C258421CE00C79100 /* Info.plist */,
 				E9A21569258421CE00C79100 /* Preview Content */,
@@ -275,6 +281,8 @@
 			files = (
 				E9A21566258421CC00C79100 /* ContentView.swift in Sources */,
 				E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */,
+				F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */,
+				F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */,
 				E9A21564258421CC00C79100 /* GoalzApp.swift in Sources */,
 				E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */,
 			);
@@ -590,6 +598,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F838AB6F258425CB0097C2CB /* Goalz.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F838AB70258425CB0097C2CB /* Goalz.xcdatamodel */,
+			);
+			currentVersion = F838AB70258425CB0097C2CB /* Goalz.xcdatamodel */;
+			path = Goalz.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E9A21558258421CC00C79100 /* Project object */;
 }
