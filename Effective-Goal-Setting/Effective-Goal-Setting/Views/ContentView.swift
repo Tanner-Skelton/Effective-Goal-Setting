@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import UIKit
 
 struct GoalView: View {
     // How to create another view
@@ -15,27 +16,14 @@ struct GoalView: View {
     }
 }
 
-struct NavigationBarView: View {
-    
-    @State private var isShowingGoalView = false
-    var body: some View {
-        NavigationView{
-            NavigationLink(
-                destination: GoalView(),
-                label: {
-                    /*@START_MENU_TOKEN@*/Text("Navigate")/*@END_MENU_TOKEN@*/
-                })
-        }
-    }
-}
-
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
+    /*@FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    */
     
     // showing views based on bool
     //@State private var isShowingGoalView = false
@@ -43,10 +31,13 @@ struct ContentView: View {
     @State private var selection: String? = nil
     
     var toolbar: UIToolbar!
+    var systemItem = UIBarButtonItem.SystemItem.compose
 
     var body: some View {
         NavigationView{
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+            // Need to have something in the main view
+            Text("Test")
+            /*VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
                 NavigationLink(
                     destination: GoalView(),
                     tag: "Goal",
@@ -55,9 +46,18 @@ struct ContentView: View {
                 Button("Create Goal"){
                     self.selection = "Goal"
                 }
-            })
+            })*/
                 .navigationBarTitle("Goals")
-                .navigationBarItems(trailing: NavigationBarView())
+                //.navigationBarItems(trailing: NavigationBarView())
+                .toolbar(content: {
+                    ToolbarItem{
+                        NavigationLink(
+                            destination: GoalView(),
+                            label: {
+                                Image(systemName: "trash")
+                            })
+                    }
+                })
         }
     }
     /*var body: some View {
@@ -78,6 +78,7 @@ struct ContentView: View {
         }
     }*/
 
+    /*
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
@@ -108,6 +109,7 @@ struct ContentView: View {
             }
         }
     }
+    */
 }
 
 private let itemFormatter: DateFormatter = {
