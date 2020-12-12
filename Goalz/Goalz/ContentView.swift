@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct CreateGoalView: View {
+    
+    @State var goalTitle: String = ""
+    @State var startDate: Date = Date()
+    @State var endDate: Date = Date.init()
+    @State var goalDescription: String = ""
+    
     var body: some View{
         NavigationView{
-            Form {
-                Text("This is the form")
+            Form{
+                TextField("Name of your goal:", text: $goalTitle)
+                DatePicker("Start Date", selection: $startDate)
+                DatePicker("End Date", selection: $endDate)
+                TextField("Describe your goal:", text: $goalDescription)
+                Button("Confirm") {
+                    print($goalTitle, $startDate, $endDate, $goalDescription)
+                    ContentView().addGoal(title: goalTitle, startDate: startDate, endDate: endDate, description: goalDescription)
+                }
             }
+            .padding()
             .navigationBarTitle("Set a Goal")
             //.navigationBarHidden(true)
             .accentColor(.blue)
@@ -29,11 +43,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            NavigationLink(
-                destination: Text("Hello World!"),
-                label: {
-                    Text("Navigate")
-                })
+            Form {
+                ForEach (goals) { goal in
+                    Text(goal.title ?? "???")
+                }
+            }
                 .navigationBarTitle("Goalz")
                 .toolbar(content: {
                     NavigationLink(
@@ -45,19 +59,19 @@ struct ContentView: View {
         }
     }
     
-    private func addGoal() {
+    public func addGoal(title: String, startDate: Date, endDate: Date, description: String) {
         withAnimation {
             let newGoal = Goal(context: viewContext)
-            newGoal.title = "New goal bitch"
-            newGoal.startDate = Date()
-            newGoal.endDate = nil
-            newGoal.goalDescription = "this is a new goal bitch"
+            newGoal.title = title
+            newGoal.startDate = startDate
+            newGoal.endDate = endDate
+            newGoal.goalDescription = description
             
-            saveContext()
+            self.saveContext()
         }
     }
     
-    private func deleteGoal(offsets: IndexSet) {
+    public func deleteGoal(offsets: IndexSet) {
         withAnimation {
             offsets.map { goals[$0]}.forEach(viewContext.delete)
         }
@@ -65,7 +79,7 @@ struct ContentView: View {
     }
     
     
-    private func saveContext() {
+    public func saveContext() {
         do {
             try viewContext.save()
         } catch {
