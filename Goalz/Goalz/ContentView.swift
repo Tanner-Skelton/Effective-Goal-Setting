@@ -26,6 +26,7 @@ struct CreateGoalView: View {
                 Button("Confirm") {
                     // make sure we have a goal title
                     guard self.goalTitle != "" else {return}
+                    guard self.goalDescription != "" else {return}
                     let newGoal = Goal(context: viewContext)
                     newGoal.title = self.goalTitle
                     newGoal.startDate = self.startDate
