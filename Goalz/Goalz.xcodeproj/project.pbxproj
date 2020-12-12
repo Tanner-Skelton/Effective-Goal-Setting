@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E99EEF7725853B2700043E27 /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99EEF7525853B2700043E27 /* Goal+CoreDataClass.swift */; };
+		E99EEF7825853B2700043E27 /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99EEF7625853B2700043E27 /* Goal+CoreDataProperties.swift */; };
 		E9A21564258421CC00C79100 /* GoalzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21563258421CC00C79100 /* GoalzApp.swift */; };
 		E9A21566258421CC00C79100 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21565258421CC00C79100 /* ContentView.swift */; };
 		E9A21568258421CE00C79100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A21567258421CE00C79100 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E99EEF7525853B2700043E27 /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E99EEF7625853B2700043E27 /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E9A21560258421CC00C79100 /* Goalz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goalz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A21563258421CC00C79100 /* GoalzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalzApp.swift; sourceTree = "<group>"; };
 		E9A21565258421CC00C79100 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		E9A21557258421CC00C79100 = {
 			isa = PBXGroup;
 			children = (
+				E99EEF7525853B2700043E27 /* Goal+CoreDataClass.swift */,
+				E99EEF7625853B2700043E27 /* Goal+CoreDataProperties.swift */,
 				E9A21562258421CC00C79100 /* Goalz */,
 				E9A21574258421CE00C79100 /* GoalzTests */,
 				E9A2157F258421CE00C79100 /* GoalzUITests */,
@@ -280,10 +286,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A21566258421CC00C79100 /* ContentView.swift in Sources */,
+				E99EEF7725853B2700043E27 /* Goal+CoreDataClass.swift in Sources */,
 				E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */,
 				F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */,
 				F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */,
 				E9A21564258421CC00C79100 /* GoalzApp.swift in Sources */,
+				E99EEF7825853B2700043E27 /* Goal+CoreDataProperties.swift in Sources */,
 				E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

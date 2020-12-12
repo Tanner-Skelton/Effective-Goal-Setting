@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CreateGoalView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentationMode
     
     @State var goalTitle: String = ""
     @State var startDate: Date = Date()
@@ -22,21 +24,34 @@ struct CreateGoalView: View {
                 DatePicker("End Date", selection: $endDate)
                 TextField("Describe your goal:", text: $goalDescription)
                 Button("Confirm") {
-                    print($goalTitle, $startDate, $endDate, $goalDescription)
-                    ContentView().addGoal(title: goalTitle, startDate: startDate, endDate: endDate, description: goalDescription)
+                    // make sure we have a goal title
+                    guard self.goalTitle != "" else {return}
+                    let newGoal = Goal(context: viewContext)
+                    newGoal.title = self.goalTitle
+                    newGoal.startDate = self.startDate
+                    newGoal.endDate = self.endDate
+                    newGoal.goalDescription = self.goalDescription
+                    do {
+                        try viewContext.save()
+                        print("Goal Created.")
+                        presentationMode.wrappedValue.dismiss()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
             }
             .padding()
             .navigationBarTitle("Set a Goal")
             //.navigationBarHidden(true)
             .accentColor(.blue)
+            
         }
         .lazyPop()
     }
 }
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) var viewContext
     
     @FetchRequest(sortDescriptors: [])
     private var goals: FetchedResults<Goal>
@@ -45,7 +60,7 @@ struct ContentView: View {
         NavigationView{
             Form {
                 ForEach (goals) { goal in
-                    Text(goal.title ?? "???")
+                    Text(goal.title)
                 }
             }
                 .navigationBarTitle("Goalz")
@@ -91,7 +106,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
