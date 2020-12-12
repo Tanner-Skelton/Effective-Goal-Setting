@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E99EEF7725853B2700043E27 /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99EEF7525853B2700043E27 /* Goal+CoreDataClass.swift */; };
+		E99EEF7825853B2700043E27 /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99EEF7625853B2700043E27 /* Goal+CoreDataProperties.swift */; };
 		E9A21564258421CC00C79100 /* GoalzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21563258421CC00C79100 /* GoalzApp.swift */; };
 		E9A21566258421CC00C79100 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21565258421CC00C79100 /* ContentView.swift */; };
 		E9A21568258421CE00C79100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A21567258421CE00C79100 /* Assets.xcassets */; };
 		E9A2156B258421CE00C79100 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A2156A258421CE00C79100 /* Preview Assets.xcassets */; };
 		E9A21576258421CE00C79100 /* GoalzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21575258421CE00C79100 /* GoalzTests.swift */; };
 		E9A21581258421CE00C79100 /* GoalzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21580258421CE00C79100 /* GoalzUITests.swift */; };
+		E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */; };
+		E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */; };
 		F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F838AB6F258425CB0097C2CB /* Goalz.xcdatamodeld */; };
 		F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89F4DC8258426B30051FEC2 /* Persistence.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E99EEF7525853B2700043E27 /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E99EEF7625853B2700043E27 /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E9A21560258421CC00C79100 /* Goalz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goalz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A21563258421CC00C79100 /* GoalzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalzApp.swift; sourceTree = "<group>"; };
 		E9A21565258421CC00C79100 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +53,8 @@
 		E9A2157C258421CE00C79100 /* GoalzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoalzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A21580258421CE00C79100 /* GoalzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalzUITests.swift; sourceTree = "<group>"; };
 		E9A21582258421CE00C79100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightToPopViewController.swift; sourceTree = "<group>"; };
 		F838AB70258425CB0097C2CB /* Goalz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Goalz.xcdatamodel; sourceTree = "<group>"; };
 		F89F4DC8258426B30051FEC2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +87,8 @@
 		E9A21557258421CC00C79100 = {
 			isa = PBXGroup;
 			children = (
+				E99EEF7525853B2700043E27 /* Goal+CoreDataClass.swift */,
+				E99EEF7625853B2700043E27 /* Goal+CoreDataProperties.swift */,
 				E9A21562258421CC00C79100 /* Goalz */,
 				E9A21574258421CE00C79100 /* GoalzTests */,
 				E9A2157F258421CE00C79100 /* GoalzUITests */,
@@ -101,6 +111,7 @@
 			children = (
 				E9A21563258421CC00C79100 /* GoalzApp.swift */,
 				E9A21565258421CC00C79100 /* ContentView.swift */,
+				E9A2159125842AA300C79100 /* LazyPop */,
 				F89F4DC8258426B30051FEC2 /* Persistence.swift */,
 				F838AB6F258425CB0097C2CB /* Goalz.xcdatamodeld */,
 				E9A21567258421CE00C79100 /* Assets.xcassets */,
@@ -134,6 +145,15 @@
 				E9A21582258421CE00C79100 /* Info.plist */,
 			);
 			path = GoalzUITests;
+			sourceTree = "<group>";
+		};
+		E9A2159125842AA300C79100 /* LazyPop */ = {
+			isa = PBXGroup;
+			children = (
+				E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */,
+				E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */,
+			);
+			path = LazyPop;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +286,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A21566258421CC00C79100 /* ContentView.swift in Sources */,
+				E99EEF7725853B2700043E27 /* Goal+CoreDataClass.swift in Sources */,
+				E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */,
 				F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */,
 				F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */,
 				E9A21564258421CC00C79100 /* GoalzApp.swift in Sources */,
+				E99EEF7825853B2700043E27 /* Goal+CoreDataProperties.swift in Sources */,
+				E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
