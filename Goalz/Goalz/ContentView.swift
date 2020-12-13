@@ -18,7 +18,7 @@ struct ContentView: View {
         NavigationView{
             List {
                 ForEach (goals) { goal in
-                    NavigationLink(destination: DetailGoalView()) {
+                    NavigationLink(destination: DetailGoalView(goal: goal)) {
                         Text(goal.title)
                     }
                 }
