@@ -16,9 +16,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            Form {
+            List {
                 ForEach (goals) { goal in
-                    Text(goal.title)
+                    NavigationLink(destination: DetailGoalView(goal: goal)) {
+                        Text(goal.title)
+                    }
                 }
             }
                 .navigationBarTitle("Goalz")
