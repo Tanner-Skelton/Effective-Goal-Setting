@@ -16,7 +16,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             List(goals, id: \.self) { goal in
-                Text(goal.title)
+                NavigationLink(destination: DetailGoalView(goal: goal)) {
+                        Text(goal.title)
+                    }
                 }
             .navigationTitle("Goalz")
             .toolbar(content: {
