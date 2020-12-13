@@ -19,6 +19,7 @@
 		E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */; };
 		F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F838AB6F258425CB0097C2CB /* Goalz.xcdatamodeld */; };
 		F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89F4DC8258426B30051FEC2 /* Persistence.swift */; };
+		F89F4DDD258576590051FEC2 /* CreateGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89F4DDC258576590051FEC2 /* CreateGoal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightToPopViewController.swift; sourceTree = "<group>"; };
 		F838AB70258425CB0097C2CB /* Goalz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Goalz.xcdatamodel; sourceTree = "<group>"; };
 		F89F4DC8258426B30051FEC2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		F89F4DDC258576590051FEC2 /* CreateGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				E9A21565258421CC00C79100 /* ContentView.swift */,
 				E9A2159125842AA300C79100 /* LazyPop */,
 				F89F4DC8258426B30051FEC2 /* Persistence.swift */,
+				F89F4DDC258576590051FEC2 /* CreateGoal.swift */,
 				F838AB6F258425CB0097C2CB /* Goalz.xcdatamodeld */,
 				E9A21567258421CE00C79100 /* Assets.xcassets */,
 				E9A2156C258421CE00C79100 /* Info.plist */,
@@ -291,6 +294,7 @@
 				F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */,
 				F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */,
 				E9A21564258421CC00C79100 /* GoalzApp.swift in Sources */,
+				F89F4DDD258576590051FEC2 /* CreateGoal.swift in Sources */,
 				E99EEF7825853B2700043E27 /* Goal+CoreDataProperties.swift in Sources */,
 				E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */,
 			);
