@@ -17,6 +17,7 @@
 		E9A21581258421CE00C79100 /* GoalzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A21580258421CE00C79100 /* GoalzUITests.swift */; };
 		E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */; };
 		E9A2159B25842AF900C79100 /* SwipeRightToPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */; };
+		F80CC20A2586AFCE00C26FEB /* DetailGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80CC2092586AFCE00C26FEB /* DetailGoalView.swift */; };
 		F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F838AB6F258425CB0097C2CB /* Goalz.xcdatamodeld */; };
 		F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89F4DC8258426B30051FEC2 /* Persistence.swift */; };
 		F89F4DDD258576590051FEC2 /* CreateGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89F4DDC258576590051FEC2 /* CreateGoal.swift */; };
@@ -56,6 +57,7 @@
 		E9A21582258421CE00C79100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9A2159225842AC500C79100 /* SlideAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		E9A2159A25842AF900C79100 /* SwipeRightToPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRightToPopViewController.swift; sourceTree = "<group>"; };
+		F80CC2092586AFCE00C26FEB /* DetailGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGoalView.swift; sourceTree = "<group>"; };
 		F838AB70258425CB0097C2CB /* Goalz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Goalz.xcdatamodel; sourceTree = "<group>"; };
 		F89F4DC8258426B30051FEC2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F89F4DDC258576590051FEC2 /* CreateGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoal.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		E9A21557258421CC00C79100 = {
 			isa = PBXGroup;
 			children = (
+				F80CC2092586AFCE00C26FEB /* DetailGoalView.swift */,
 				E99EEF7525853B2700043E27 /* Goal+CoreDataClass.swift */,
 				E99EEF7625853B2700043E27 /* Goal+CoreDataProperties.swift */,
 				E9A21562258421CC00C79100 /* Goalz */,
@@ -294,6 +297,7 @@
 				F89F4DC9258426B30051FEC2 /* Persistence.swift in Sources */,
 				F838AB71258425CB0097C2CB /* Goalz.xcdatamodeld in Sources */,
 				E9A21564258421CC00C79100 /* GoalzApp.swift in Sources */,
+				F80CC20A2586AFCE00C26FEB /* DetailGoalView.swift in Sources */,
 				F89F4DDD258576590051FEC2 /* CreateGoal.swift in Sources */,
 				E99EEF7825853B2700043E27 /* Goal+CoreDataProperties.swift in Sources */,
 				E9A2159325842AC500C79100 /* SlideAnimatedTransitioning.swift in Sources */,
