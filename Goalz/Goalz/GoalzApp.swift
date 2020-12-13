@@ -1,9 +1,6 @@
 //
 //  GoalzApp.swift
 //  Goalz
-//
-//  Created by Tanner Skelton on 12/11/20.
-//
 
 import SwiftUI
 

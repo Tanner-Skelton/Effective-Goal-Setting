@@ -1,65 +1,33 @@
 //
 //  ContentView.swift
 //  Goalz
-//
-//  Created by Tanner Skelton on 12/11/20.
-//
 
 import SwiftUI
-
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @FetchRequest(sortDescriptors: [])
-    private var goals: FetchedResults<Goal>
+    
+    @FetchRequest(entity: Goal.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Goal.title, ascending: true)]
+    ) var goals: FetchedResults<Goal>
+    //@FetchRequest(sortDescriptors: [])
+    //private var goals: FetchedResults<Goal>
     
     var body: some View {
         NavigationView{
-            List {
-                ForEach (goals) { goal in
-                    NavigationLink(destination: DetailGoalView(goal: goal)) {
+            List(goals, id: \.self) { goal in
+                NavigationLink(destination: DetailGoalView(goal: goal)) {
                         Text(goal.title)
                     }
                 }
-            }
-                .navigationBarTitle("Goalz")
-                .toolbar(content: {
-                    NavigationLink(
-                        destination: CreateGoalView(),
-                        label: {
-                            Text("Navigate")
-                        })
-                })
-        }
-    }
-    
-    public func addGoal(title: String, startDate: Date, endDate: Date, description: String) {
-        withAnimation {
-            let newGoal = Goal(context: viewContext)
-            newGoal.title = title
-            newGoal.startDate = startDate
-            newGoal.endDate = endDate
-            newGoal.goalDescription = description
-            
-            self.saveContext()
-        }
-    }
-    
-    public func deleteGoal(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { goals[$0]}.forEach(viewContext.delete)
-        }
-        self.saveContext()
-    }
-    
-    
-    public func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            let error = error as NSError
-            fatalError("Unresolved Error: \(error)")
+            .navigationTitle("Goalz")
+            .toolbar(content: {
+                NavigationLink(
+                    destination: CreateGoalView(),
+                    label: {
+                        Text("Navigate")
+                    })
+            })
         }
     }
 }
