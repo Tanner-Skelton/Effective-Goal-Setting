@@ -1,9 +1,6 @@
 //
 //  CreateGoal.swift
 //  Goalz
-//
-//  Created by John Erwin on 12/12/20.
-//
 
 import SwiftUI
 
@@ -25,7 +22,10 @@ struct CreateGoalView: View {
                 DatePicker("End Date", selection: $endDate)
                 TextField("Describe your goal:", text: $goalDescription)
                 Button("Confirm") {
-                    addGoal(title: self.goalTitle, startDate: self.startDate, endDate: self.endDate, description: self.goalDescription)
+                    addGoal(title: self.goalTitle,
+                            startDate: self.startDate,
+                            endDate: self.endDate,
+                            description: self.goalDescription)
                 }
             }
             .padding()
@@ -45,6 +45,7 @@ struct CreateGoalView: View {
         newGoal.startDate = startDate
         newGoal.endDate = endDate
         newGoal.goalDescription = description
+        //viewContext.insert(newGoal)
         do {
             try viewContext.save()
             print("Goal Created.")

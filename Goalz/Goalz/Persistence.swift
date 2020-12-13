@@ -1,9 +1,6 @@
 //
 //  Persistence.swift
 //  Goalz
-//
-//  Created by John Erwin on 12/11/20.
-//
 
 import CoreData
 
