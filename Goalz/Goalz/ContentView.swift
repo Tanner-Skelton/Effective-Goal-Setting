@@ -24,7 +24,7 @@ struct CreateGoalView: View {
                 DatePicker("End Date", selection: $endDate)
                 TextField("Describe your goal:", text: $goalDescription)
                 Button("Confirm") {
-                    // make sure we have a goal title
+                    // make sure we have a goal title and description
                     guard self.goalTitle != "" else {return}
                     guard self.goalDescription != "" else {return}
                     let newGoal = Goal(context: viewContext)
@@ -43,7 +43,6 @@ struct CreateGoalView: View {
             }
             .padding()
             .navigationBarTitle("Set a Goal")
-            //.navigationBarHidden(true)
             .accentColor(.blue)
             
         }
@@ -54,14 +53,21 @@ struct CreateGoalView: View {
 struct ContentView: View {
     @Environment(\.managedObjectContext) var viewContext
     
-    @FetchRequest(sortDescriptors: [])
-    private var goals: FetchedResults<Goal>
+    
+    @FetchRequest(entity: Goal.entity(), sortDescriptors: [
+            NSSortDescriptor(keyPath: \Goal.title, ascending: true)
+        ]
+    ) var goals: FetchedResults<Goal>
+    //@FetchRequest(sortDescriptors: [])
+    //private var goals: FetchedResults<Goal>
     
     var body: some View {
         NavigationView{
             Form {
-                ForEach (goals) { goal in
-                    Text(goal.title)
+                ForEach(goals) { goal in
+                    VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+                        Text("\(goal.title)")
+                    })
                 }
             }
                 .navigationBarTitle("Goalz")
