@@ -20,11 +20,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            Form {
+            List {
                 ForEach(goals) { goal in
-                    VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+                    VStack(alignment: .leading) {
                         Text("\(goal.title)")
-                    })
+                    }
                 }
             }
                 .navigationBarTitle("Goalz")
