@@ -55,3 +55,10 @@ struct CreateGoalView: View {
         }
     }
 }
+#if DEBUG
+struct CreateGoal_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateGoalView()
+    }
+}
+#endif

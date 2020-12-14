@@ -27,3 +27,10 @@ struct DetailGoalView: View {
         }
     }
 }
+
+struct DetailGoalView_Previews: PreviewProvider {
+    let goal = Goal()
+    static var previews: some View {
+        DetailGoalView(goal: goal )
+    }
+}
