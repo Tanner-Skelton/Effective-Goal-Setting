@@ -10,8 +10,6 @@ struct ContentView: View {
     
     @FetchRequest(entity: Goal.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Goal.title, ascending: true)]
     ) var goals: FetchedResults<Goal>
-    //@FetchRequest(sortDescriptors: [])
-    //private var goals: FetchedResults<Goal>
     
     var body: some View {
         NavigationView {

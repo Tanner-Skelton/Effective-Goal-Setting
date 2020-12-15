@@ -9,16 +9,19 @@ struct CreateGoalView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State var goalTitle: String = ""
-    @State var startDate: Date = Date()
+    @State var startDate: Date = Date.init()
     @State var endDate: Date = Date.init()
     @State var goalDescription: String = ""
     
     
     var body: some View{
-        NavigationView{
             Form{
-                TextField("Name of your goal:", text: $goalTitle)
-                DatePicker("Start Date", selection: $startDate)
+                Section(header: Text("Goal Name"), footer: Text("*It is important that your goal's name is meaningful.")) {
+                    TextField("Name your goal!", text: $goalTitle)
+                }
+                Section(header: Text("Start Date"), footer: Text("If you are not ready to start working on this today that is fine! Set a date for the future, we will remind you.")) {
+                    DatePicker("Start Date", selection: $startDate)
+                }
                 DatePicker("End Date", selection: $endDate)
                 TextField("Describe your goal:", text: $goalDescription)
                 Button("Confirm") {
@@ -28,14 +31,13 @@ struct CreateGoalView: View {
                             description: self.goalDescription)
                 }
             }
-            .padding()
-            .navigationBarTitle("Set a Goal")
+            //.navigationTitle("Create Goal")
+            //.padding()
             //.navigationBarHidden(true)
-            .accentColor(.blue)
-            
+            .lazyPop()
+            .navigationBarTitle("Create Goal", displayMode: .large)
         }
-        .lazyPop()
-    }
+    
     
     private func addGoal(title: String, startDate: Date, endDate: Date, description: String) {
         guard title != "" else { return }
@@ -53,5 +55,11 @@ struct CreateGoalView: View {
         } catch {
             print(error.localizedDescription)
         }
+    }
+}
+
+struct CreateGoalView_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateGoalView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
