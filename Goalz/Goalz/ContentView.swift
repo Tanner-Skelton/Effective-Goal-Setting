@@ -14,12 +14,24 @@ struct ContentView: View {
     //private var goals: FetchedResults<Goal>
     
     var body: some View {
-        NavigationView{
-            List(goals, id: \.self) { goal in
-                NavigationLink(destination: DetailGoalView(goal: goal)) {
+        NavigationView {
+            List {
+                ForEach(goals, id: \.self) { goal in
+                    NavigationLink(destination: DetailGoalView(goal: goal)){
                         Text(goal.title)
                     }
                 }
+                .onDelete(perform: { indexSet in
+                    for index in indexSet {
+                        viewContext.delete(goals[index])
+                    }
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                })
+            }
             .navigationTitle("Goalz")
             .toolbar(content: {
                 NavigationLink(
