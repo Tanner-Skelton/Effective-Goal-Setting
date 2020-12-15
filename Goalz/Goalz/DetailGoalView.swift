@@ -1,9 +1,7 @@
 //
 //  DetailGoalView.swift
 //  Goalz
-//
-//  Created by John Erwin on 12/13/20.
-//
+
 
 import SwiftUI
 
