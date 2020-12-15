@@ -4,31 +4,35 @@
 
 import SwiftUI
 
+class CreateGoal: ObservableObject {
+    @Published var goalTitle: String = ""
+    @Published var startDate: Date = Date.init()
+    @Published var endDate: Date = Date.init()
+    @Published var description: String = ""
+}
+
 struct CreateGoalView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var newGoalObj = CreateGoal()
     
-    @State var goalTitle: String = ""
-    @State var startDate: Date = Date.init()
-    @State var endDate: Date = Date.init()
-    @State var goalDescription: String = ""
+    //@State var goalTitle: String = ""
+    //@State var startDate: Date = Date.init()
+    //@State var endDate: Date = Date.init()
+    //@State var goalDescription: String = ""
     
     
     var body: some View{
             Form{
-                Section(header: Text("Goal Name"), footer: Text("*It is important that your goal's name is meaningful.")) {
-                    TextField("Name your goal!", text: $goalTitle)
-                }
-                Section(header: Text("Start Date"), footer: Text("If you are not ready to start working on this today that is fine! Set a date for the future, we will remind you.")) {
-                    DatePicker("Start Date", selection: $startDate)
-                }
-                DatePicker("End Date", selection: $endDate)
-                TextField("Describe your goal:", text: $goalDescription)
+                GoalTitleView()
+                StartDateView()
+                EndDateView()
+                GoalDescriptionView()
                 Button("Confirm") {
-                    addGoal(title: self.goalTitle,
-                            startDate: self.startDate,
-                            endDate: self.endDate,
-                            description: self.goalDescription)
+                    addGoal(title: self.newGoalObj.goalTitle,
+                            startDate: self.newGoalObj.startDate,
+                            endDate: self.newGoalObj.endDate,
+                            description: self.newGoalObj.description)
                 }
             }
             //.navigationTitle("Create Goal")
@@ -36,6 +40,7 @@ struct CreateGoalView: View {
             //.navigationBarHidden(true)
             .lazyPop()
             .navigationBarTitle("Create Goal", displayMode: .large)
+            .environmentObject(newGoalObj)
         }
     
     
@@ -55,6 +60,42 @@ struct CreateGoalView: View {
         } catch {
             print(error.localizedDescription)
         }
+    }
+}
+
+struct GoalTitleView: View {
+    @EnvironmentObject var newGoalObj: CreateGoal
+    
+    var body: some View {
+        Section(header: Text("Goal Name"), footer: Text("*It is important that your goal's name is meaningful.")) {
+            TextField("Name your goal!", text: self.$newGoalObj.goalTitle)
+        }
+    }
+}
+
+struct StartDateView: View {
+    @EnvironmentObject var newGoalObj: CreateGoal
+    
+    var body: some View {
+        Section(header: Text("Start Date"), footer: Text("If you are not ready to start working on this today that is fine! Set a date for the future, we will remind you.")) {
+            DatePicker("Start Date", selection: self.$newGoalObj.startDate)
+        }
+    }
+}
+
+struct EndDateView: View {
+    @EnvironmentObject var newGoalObj: CreateGoal
+    
+    var body: some View {
+        DatePicker("End Date", selection: self.$newGoalObj.endDate)
+    }
+}
+
+struct GoalDescriptionView: View {
+    @EnvironmentObject var newGoalObj: CreateGoal
+    
+    var body: some View {
+        TextField("Describe your goal:", text: self.$newGoalObj.description)
     }
 }
 
