@@ -16,23 +16,31 @@ struct CreateGoalView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var newGoalObj = CreateGoal()
     
-    //@State var goalTitle: String = ""
-    //@State var startDate: Date = Date.init()
-    //@State var endDate: Date = Date.init()
-    //@State var goalDescription: String = ""
-    
+    private var views: [String] = ["Title", "StartDate", "EndDate", "Description"]
+    @State private var canSubmit: Bool = false
+    @State private var viewIndex: Int = 0
     
     var body: some View{
             Form{
-                GoalTitleView()
-                StartDateView()
-                EndDateView()
-                GoalDescriptionView()
-                Button("Confirm") {
-                    addGoal(title: self.newGoalObj.goalTitle,
-                            startDate: self.newGoalObj.startDate,
-                            endDate: self.newGoalObj.endDate,
-                            description: self.newGoalObj.description)
+                if views[viewIndex] == "Title"{
+                    GoalTitleView()
+                }
+                if views[viewIndex] == "StartDate"{
+                    StartDateView()
+                }
+                //EndDateView()
+                //GoalDescriptionView()
+                if canSubmit {
+                    Button("Confirm") {
+                        addGoal(title: self.newGoalObj.goalTitle,
+                                startDate: self.newGoalObj.startDate,
+                                endDate: self.newGoalObj.endDate,
+                                description: self.newGoalObj.description)
+                    }
+                } else {
+                    Button("Next") {
+                        self.viewIndex += 1
+                    }
                 }
             }
             //.navigationTitle("Create Goal")
