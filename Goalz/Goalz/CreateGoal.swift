@@ -42,6 +42,13 @@ struct CreateGoalView: View {
                                 description: self.newGoalObj.description)
                     }
                 } else {
+                    if viewIndex != 0 {
+                        Section() {
+                            Button("Back"){
+                                self.viewIndex -= 1
+                            }
+                        }
+                    }
                     Button("Next") {
                         self.viewIndex += 1
                         if viewIndex == (views.count - 1) {
