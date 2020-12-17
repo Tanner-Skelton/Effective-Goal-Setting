@@ -20,18 +20,22 @@ struct CreateGoalView: View {
     @State private var canSubmit: Bool = false
     @State private var viewIndex: Int = 0
     
-    var body: some View{
+    var body: some View {
             Form{
-                if views[viewIndex] == "Title"{
+                if views[viewIndex] == "Title" {
                     GoalTitleView()
                 }
-                if views[viewIndex] == "StartDate"{
+                if views[viewIndex] == "StartDate" {
                     StartDateView()
                 }
-                //EndDateView()
-                //GoalDescriptionView()
+                if views[viewIndex] == "EndDate" {
+                    EndDateView()
+                }
+                if views[viewIndex] == "Description" {
+                    GoalDescriptionView()
+                }
                 if canSubmit {
-                    Button("Confirm") {
+                    Button("Create") {
                         addGoal(title: self.newGoalObj.goalTitle,
                                 startDate: self.newGoalObj.startDate,
                                 endDate: self.newGoalObj.endDate,
@@ -40,6 +44,9 @@ struct CreateGoalView: View {
                 } else {
                     Button("Next") {
                         self.viewIndex += 1
+                        if viewIndex == (views.count - 1) {
+                            self.canSubmit = true
+                        }
                     }
                 }
             }
