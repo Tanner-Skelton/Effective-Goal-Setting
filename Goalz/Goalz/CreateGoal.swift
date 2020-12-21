@@ -6,9 +6,11 @@ import SwiftUI
 
 class CreateGoal: ObservableObject {
     @Published var goalTitle: String = ""
-    @Published var startDate: Date = Date.init()
-    @Published var endDate: Date = Date.init()
+    @Published var startDate: Date = Date()
+    @Published var endDate: Date = Date()
     @Published var description: String = ""
+    @Published var canMoveView: Bool = false
+    
 }
 
 struct CreateGoalView: View {
@@ -25,7 +27,7 @@ struct CreateGoalView: View {
                 if views[viewIndex] == "Title" {
                     GoalTitleView()
                 }
-                if views[viewIndex] == "StartDate" {
+                if views[viewIndex] == "StartDate"{
                     StartDateView()
                 }
                 if views[viewIndex] == "EndDate" {
@@ -35,11 +37,13 @@ struct CreateGoalView: View {
                     GoalDescriptionView()
                 }
                 if canSubmit {
-                    Button("Create") {
-                        addGoal(title: self.newGoalObj.goalTitle,
-                                startDate: self.newGoalObj.startDate,
-                                endDate: self.newGoalObj.endDate,
-                                description: self.newGoalObj.description)
+                    Section(){
+                        Button("Create") {
+                            addGoal(title: self.newGoalObj.goalTitle,
+                                    startDate: self.newGoalObj.startDate,
+                                    endDate: self.newGoalObj.endDate,
+                                    description: self.newGoalObj.description)
+                        }.disabled(!self.newGoalObj.canMoveView)
                     }
                 } else {
                     if viewIndex != 0 {
@@ -51,15 +55,13 @@ struct CreateGoalView: View {
                     }
                     Button("Next") {
                         self.viewIndex += 1
+                        self.newGoalObj.canMoveView = false
                         if viewIndex == (views.count - 1) {
                             self.canSubmit = true
                         }
-                    }
+                    }.disabled(!self.newGoalObj.canMoveView)
                 }
             }
-            //.navigationTitle("Create Goal")
-            //.padding()
-            //.navigationBarHidden(true)
             .lazyPop()
             .navigationBarTitle("Create Goal", displayMode: .large)
             .environmentObject(newGoalObj)
@@ -90,7 +92,13 @@ struct GoalTitleView: View {
     
     var body: some View {
         Section(header: Text("Goal Name"), footer: Text("*It is important that your goal's name is meaningful.")) {
-            TextField("Name your goal!", text: self.$newGoalObj.goalTitle)
+            TextField("Name your goal!", text: self.$newGoalObj.goalTitle, onCommit: {
+                if self.newGoalObj.goalTitle != "" {
+                    self.newGoalObj.canMoveView = true
+                } else {
+                    self.newGoalObj.canMoveView = false
+                }
+            })
         }
     }
 }
@@ -98,9 +106,22 @@ struct GoalTitleView: View {
 struct StartDateView: View {
     @EnvironmentObject var newGoalObj: CreateGoal
     
+    @State private var footerText = ""
+    
     var body: some View {
-        Section(header: Text("Start Date"), footer: Text("If you are not ready to start working on this today that is fine! Set a date for the future, we will remind you.")) {
-            DatePicker("Start Date", selection: self.$newGoalObj.startDate)
+        Section(header: Text("Start Date"), footer: Text("\(footerText)").fixedSize(horizontal: false, vertical: true)) {
+            DatePicker("Start Date", selection: self.$newGoalObj.startDate).onChange(of: self.newGoalObj.startDate, perform: { value in
+                if self.newGoalObj.startDate >= Date() {
+                    self.newGoalObj.canMoveView = true
+                    self.footerText = "Feel free to change the date to sometime in the future if you are not ready to start!"
+                } else {
+                    self.newGoalObj.canMoveView = false
+                    self.footerText = "Please enter a date after \(Date())"
+                }
+            }).onAppear(perform: {
+                self.newGoalObj.canMoveView = true
+                self.footerText = "Feel free to change the date to sometime in the future if you are not ready to start!"
+            })
         }
     }
 }
