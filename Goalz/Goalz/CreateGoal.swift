@@ -129,8 +129,23 @@ struct StartDateView: View {
 struct EndDateView: View {
     @EnvironmentObject var newGoalObj: CreateGoal
     
+    @State private var footerText = ""
+    
     var body: some View {
-        DatePicker("End Date", selection: self.$newGoalObj.endDate)
+        Section(header: Text("End Date"), footer: Text("\(footerText)").fixedSize(horizontal: false, vertical: true)) {
+            DatePicker("End Date", selection: self.$newGoalObj.endDate).onChange(of: self.newGoalObj.endDate, perform: { value in
+                if self.newGoalObj.endDate >= Date() {
+                    self.newGoalObj.canMoveView = true
+                    self.footerText = "Select when you want to complete your goal!"
+                } else {
+                    self.newGoalObj.canMoveView = false
+                    self.footerText = "Please enter a date after \(Date())"
+                }
+            }).onAppear(perform: {
+                self.newGoalObj.canMoveView = false
+                self.footerText = "Select when you would like to complete your goal."
+            })
+        }
     }
 }
 
@@ -138,7 +153,15 @@ struct GoalDescriptionView: View {
     @EnvironmentObject var newGoalObj: CreateGoal
     
     var body: some View {
-        TextField("Describe your goal:", text: self.$newGoalObj.description)
+        Section(header: Text("Goal Description"), footer: Text("*It is important that this is descriptive!")) {
+            TextField("Describe your goal!", text: self.$newGoalObj.description, onCommit: {
+                if self.newGoalObj.description != "" {
+                    self.newGoalObj.canMoveView = true
+                } else {
+                    self.newGoalObj.canMoveView = false
+                }
+            })
+        }
     }
 }
 
