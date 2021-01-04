@@ -10,16 +10,30 @@ struct ContentView: View {
     
     @FetchRequest(entity: Goal.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Goal.title, ascending: true)]
     ) var goals: FetchedResults<Goal>
-    //@FetchRequest(sortDescriptors: [])
-    //private var goals: FetchedResults<Goal>
+    
+    fileprivate func extractedFunc() -> some DynamicViewContent {
+        return ForEach(goals, id: \.self) { goal in
+            NavigationLink(destination: DetailGoalView(goal: goal)){
+                Text(goal.title)
+            }
+        }
+        .onDelete(perform: { indexSet in
+            for index in indexSet {
+                viewContext.delete(goals[index])
+            }
+            do {
+                try viewContext.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        })
+    }
     
     var body: some View {
-        NavigationView{
-            List(goals, id: \.self) { goal in
-                NavigationLink(destination: DetailGoalView(goal: goal)) {
-                        Text(goal.title)
-                    }
-                }
+        NavigationView {
+            List {
+                extractedFunc()
+            }
             .navigationTitle("Goalz")
             .toolbar(content: {
                 NavigationLink(

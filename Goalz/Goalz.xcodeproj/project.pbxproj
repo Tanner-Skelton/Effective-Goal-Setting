@@ -91,7 +91,6 @@
 		E9A21557258421CC00C79100 = {
 			isa = PBXGroup;
 			children = (
-				F80CC2092586AFCE00C26FEB /* DetailGoalView.swift */,
 				E99EEF7525853B2700043E27 /* Goal+CoreDataClass.swift */,
 				E99EEF7625853B2700043E27 /* Goal+CoreDataProperties.swift */,
 				E9A21562258421CC00C79100 /* Goalz */,
@@ -114,6 +113,7 @@
 		E9A21562258421CC00C79100 /* Goalz */ = {
 			isa = PBXGroup;
 			children = (
+				F80CC2092586AFCE00C26FEB /* DetailGoalView.swift */,
 				E9A21563258421CC00C79100 /* GoalzApp.swift */,
 				E9A21565258421CC00C79100 /* ContentView.swift */,
 				E9A2159125842AA300C79100 /* LazyPop */,
